@@ -17,6 +17,8 @@
 
 enum layers { _BASE, _NAV, _MOUSE, _BUTTON, _MEDIA, _NUM, _SYM, _FUN };
 
+// clang-format off
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {[_BASE]   = LAYOUT_split_3x5_3(_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______),
                                                               [_NAV]    = LAYOUT_split_3x5_3(_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______),
                                                               [_MOUSE]  = LAYOUT_split_3x5_3(_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______),
@@ -27,6 +29,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {[_BASE]   = LAYOUT
                                                               [_FUN]    = LAYOUT_split_3x5_3(_______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______)
 
 };
+
+// clang-format on
 
 #ifdef OLED_ENABLE
 
@@ -171,7 +175,7 @@ static void render_luna(int LUNA_X, int LUNA_Y) {
 static void print_luna_and_wpm(void) {
     /* KEYBOARD PET RENDER START */
 
-    render_luna(0, 13);
+    render_luna(0, 6);
 
     /* KEYBOARD PET RENDER END */
 
@@ -183,6 +187,7 @@ static void print_luna_and_wpm(void) {
     wpm_str[2] = '0' + n % 10;
     wpm_str[1] = '0' + (n /= 10) % 10;
     wpm_str[0] = '0' + n / 10;
+    oled_write(" ", false);
     oled_write(wpm_str, false);
 
     oled_set_cursor(0, 15);
@@ -193,42 +198,42 @@ static void print_status_narrow(void) {
     oled_set_cursor(0, 5);
 
     // Host Keyboard Layer Status
-    oled_write("LAYER"), false);
+    oled_write("LAYER", false);
 
     oled_set_cursor(0, 6);
 
     switch (get_highest_layer(layer_state)) {
         case _BASE:
-            oled_write("Base", false);
+            oled_write_P(PSTR("Base\n"), false);
             break;
         case _NAV:
-            oled_write("Navigation", false);
+            oled_write_P(PSTR("Nav\n"), false);
             break;
         case _MOUSE:
-            oled_write("Mouse", false);
+            oled_write_P(PSTR("Mouse\n"), false);
             break;
         case _BUTTON:
-            oled_write("Button", false);
+            oled_write_P(PSTR("Btn\n"), false);
             break;
         case _MEDIA:
-            oled_write("Media", false);
+            oled_write_P(PSTR("Media\n"), false);
             break;
         case _NUM:
-            oled_write("Numbers", false);
+            oled_write_P(PSTR("Num\n"), false);
             break;
         case _SYM:
-            oled_write("Symbols", false);
+            oled_write_P(PSTR("Sym\n"), false);
             break;
         case _FUN:
-            oled_write("Functions", false);
+            oled_write_P(PSTR("Funct\n"), false);
             break;
         default:
             // Or use the write_ln shortcut over adding '\n' to the end of your string
-            oled_write("Undefined", false);
+            oled_write_P(PSTR("Undef\n"), false);
     }
 
     /* caps lock */
-    oled_set_cursor(0, 8);
+    oled_set_cursor(0, 9);
     oled_write("CPSLK", led_usb_state.caps_lock);
 }
 
@@ -265,7 +270,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 isSneaking = false;
             }
             break;
-        case KC_SPC:
+        case KC_SPACE:
             if (record->event.pressed) {
                 isJumping  = true;
                 showedJump = false;

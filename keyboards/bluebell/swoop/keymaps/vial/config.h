@@ -2,9 +2,16 @@
 
 #pragma once
 
-#define VIAL_KEYBOARD_UID {0xFD, 0x91, 0xD2, 0xB9, 0xFA, 0xD5, 0x59, 0xAB}
-#define VIAL_UNLOCK_COMBO_ROWS {0, 0}
-#define VIAL_UNLOCK_COMBO_COLS {0, 1}
+#define VIAL_KEYBOARD_UID \
+    { 0xFD, 0x91, 0xD2, 0xB9, 0xFA, 0xD5, 0x59, 0xAB }
+#define VIAL_UNLOCK_COMBO_ROWS \
+    { 0, 0 }
+#define VIAL_UNLOCK_COMBO_COLS \
+    { 0, 1 }
 
 #define RGBLIGHT_ANIMATIONS
 #define DYNAMIC_KEYMAP_LAYER_COUNT 10
+
+#define OLED_TIMEOUT 120000
+#define OLED_BRIGHTNESS 120
+#define SPLIT_WPM_ENABLE
