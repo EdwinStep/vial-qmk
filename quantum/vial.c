@@ -222,7 +222,7 @@ void vial_handle_cmd(uint8_t *msg, uint8_t length) {
             case dynamic_vial_get_number_of_entries: {
                 memset(msg, 0, length);
                 msg[0] = VIAL_TAP_DANCE_ENTRIES;
-                msg[1] = VIAL_COMBO_ENTRIES;
+                //msg[1] = VIAL_COMBO_ENTRIES;
                 msg[2] = VIAL_KEY_OVERRIDE_ENTRIES;
                 break;
             }

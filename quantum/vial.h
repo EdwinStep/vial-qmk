@@ -103,38 +103,7 @@ _Static_assert(sizeof(vial_tap_dance_entry_t) == 10, "Unexpected size of the via
 #endif
 
 
-#ifdef COMBO_ENABLE
-#define VIAL_COMBO_ENABLE
 
-#ifndef VIAL_COMBO_ENTRIES
-    #if TOTAL_EEPROM_BYTE_COUNT > 4000
-        #define VIAL_COMBO_ENTRIES 32
-    #elif TOTAL_EEPROM_BYTE_COUNT > 2000
-        #define VIAL_COMBO_ENTRIES 16
-    #elif TOTAL_EEPROM_BYTE_COUNT > 1000
-        #define VIAL_COMBO_ENTRIES 8
-    #else
-        #define VIAL_COMBO_ENTRIES 4
-    #endif
-#endif
-
-typedef struct {
-    uint16_t input[4];
-    uint16_t output;
-} vial_combo_entry_t;
-_Static_assert(sizeof(vial_combo_entry_t) == 10, "Unexpected size of the vial_combo_entry_t structure");
-
-/* also to catch wrong include order in e.g. process_combo.h */
-#ifdef COMBO_COUNT
-#error COMBO_COUNT redefined - define VIAL_COMBO_ENTRIES instead
-#endif
-
-#define COMBO_COUNT VIAL_COMBO_ENTRIES
-
-#else
-#undef VIAL_COMBO_ENTRIES
-#define VIAL_COMBO_ENTRIES 0
-#endif
 
 
 #ifdef KEY_OVERRIDE_ENABLE
