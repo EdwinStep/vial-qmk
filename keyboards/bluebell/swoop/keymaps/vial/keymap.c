@@ -385,15 +385,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
             /* KEYBOARD PET STATUS START */
 
-        case KC_LCTL:
-        case KC_RCTL:
+        case LCTL_T(KC_S):
+        case LSFT_T(KC_T):
+        case LCTL_T(KC_E):
+        case LSFT_T(KC_N):
             if (record->event.pressed) {
                 isSneaking = true;
             } else {
                 isSneaking = false;
             }
             break;
-        case KC_SPACE:
+        case LT(_NAV,KC_SPC):
             if (record->event.pressed) {
                 isJumping  = true;
                 showedJump = false;
