@@ -59,15 +59,15 @@ const uint32_t PROGMEM unicode_map[] = {
     [LT_L_Z]  = 0x17d, // Ž
 };
 
-#define K_LT_A XP(LT_S_A, LT_L_A)
-#define K_LT_C XP(LT_S_C, LT_L_C)
-#define K_LT_E1 XP(LT_S_E1, LT_L_E1)
-#define K_LT_E2 XP(LT_S_E2, LT_L_E2)
-#define K_LT_I XP(LT_S_I, LT_L_I)
-#define K_LT_S XP(LT_S_S, LT_L_S)
-#define K_LT_U1 XP(LT_S_U1, LT_L_U1)
-#define K_LT_U2 XP(LT_S_U2, LT_L_U2)
-#define K_LT_Z XP(LT_S_Z, LT_L_Z)
+#define K_LT_A UP(LT_S_A, LT_L_A)
+#define K_LT_C UP(LT_S_C, LT_L_C)
+#define K_LT_E1 UP(LT_S_E1, LT_L_E1)
+#define K_LT_E2 UP(LT_S_E2, LT_L_E2)
+#define K_LT_I UP(LT_S_I, LT_L_I)
+#define K_LT_S UP(LT_S_S, LT_L_S)
+#define K_LT_U1 UP(LT_S_U1, LT_L_U1)
+#define K_LT_U2 UP(LT_S_U2, LT_L_U2)
+#define K_LT_Z UP(LT_S_Z, LT_L_Z)
 
 // clang-format off
 
@@ -92,7 +92,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_BUTTON] = LAYOUT_split_3x5_3(
         LCTL(KC_Y), LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), LCTL(KC_V), LCTL(KC_C), LCTL(KC_X), LCTL(KC_Z), LCTL(KC_Y),
-        KC_LGUI,    KC_LALT,    KC_LCTL,    KC_LSFT,    KC_NO,      KC_NO,      KC_LSFT,    KC_LCTL,    KC_LALT,    KC_LGUI,
+        KC_LGUI,    KC_LALT,    KC_LCTL,    KC_LSFT,    UC_PREV,    UC_NEXT,    KC_LSFT,    KC_LCTL,    KC_LALT,    KC_LGUI,
         LCTL(KC_Y), LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), LCTL(KC_V), LCTL(KC_C), LCTL(KC_X), LCTL(KC_Z), LCTL(KC_Y),
                                 KC_BTN3,    KC_BTN1,    KC_BTN2,    KC_BTN2,    KC_BTN1,    KC_BTN3
     ),
