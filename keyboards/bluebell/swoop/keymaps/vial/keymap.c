@@ -14,6 +14,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include QMK_KEYBOARD_H
+#include "keymap_lithuanian_qwerty.h"
 
 enum layers { _BASE, _NAV, _MOUSE, _BUTTON, _MEDIA, _NUM, _SYM, _FUN };
 
@@ -52,8 +53,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_NUM] = LAYOUT_split_3x5_3(
         LT_LBRC,  LT_7, LT_8,   LT_9, LT_RBRC,  KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,
-        LT_SCLN,  LT_4, LT_5,   LT_6, LT_EQUAL, KC_NO, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
-        LT_GRAVE, LT_1, LT_2,   LT_3, LT_BSLS,  KC_NO, KC_NO,   KC_NO,   KC_RALT, KC_NO,
+        LT_SCLN,  LT_4, LT_5,   LT_6, LT_EQL,   KC_NO, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
+        LT_GRV,   LT_1, LT_2,   LT_3, LT_BSLS,  KC_NO, KC_NO,   KC_NO,   KC_RALT, KC_NO,
                         LT_DOT, LT_0, LT_MINS,  KC_NO, KC_NO,   KC_NO
     ),
     [_SYM] = LAYOUT_split_3x5_3(
