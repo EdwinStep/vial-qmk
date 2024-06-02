@@ -17,58 +17,6 @@
 
 enum layers { _BASE, _NAV, _MOUSE, _BUTTON, _MEDIA, _NUM, _SYM, _FUN };
 
-enum unicode_names {
-    LT_S_A,
-    LT_L_A,
-    LT_S_C,
-    LT_L_C,
-    LT_S_E1,
-    LT_L_E1,
-    LT_S_E2,
-    LT_L_E2,
-    LT_S_I,
-    LT_L_I,
-    LT_S_S,
-    LT_L_S,
-    LT_S_U1,
-    LT_L_U1,
-    LT_S_U2,
-    LT_L_U2,
-    LT_S_Z,
-    LT_L_Z,
-};
-
-const uint32_t PROGMEM unicode_map[] = {
-    [LT_S_A]  = 0x105, // ą
-    [LT_L_A]  = 0x104, // Ą
-    [LT_S_C]  = 0x10d, // č
-    [LT_L_C]  = 0x10c, // Č
-    [LT_S_E1] = 0x119, // ę
-    [LT_L_E1] = 0x118, // Ę
-    [LT_S_E2] = 0x117, // ė
-    [LT_L_E2] = 0x116, // Ė
-    [LT_S_I]  = 0x12f, // į
-    [LT_L_I]  = 0x12e, // Į
-    [LT_S_S]  = 0x161, // š
-    [LT_L_S]  = 0x160, // Š
-    [LT_S_U1] = 0x173, // ų
-    [LT_L_U1] = 0x172, // Ų
-    [LT_S_U2] = 0x16b, // ū
-    [LT_L_U2] = 0x16a, // Ū
-    [LT_S_Z]  = 0x17e, // ž
-    [LT_L_Z]  = 0x17d, // Ž
-};
-
-#define K_LT_A UP(LT_S_A, LT_L_A)
-#define K_LT_C UP(LT_S_C, LT_L_C)
-#define K_LT_E1 UP(LT_S_E1, LT_L_E1)
-#define K_LT_E2 UP(LT_S_E2, LT_L_E2)
-#define K_LT_I UP(LT_S_I, LT_L_I)
-#define K_LT_S UP(LT_S_S, LT_L_S)
-#define K_LT_U1 UP(LT_S_U1, LT_L_U1)
-#define K_LT_U2 UP(LT_S_U2, LT_L_U2)
-#define K_LT_Z UP(LT_S_Z, LT_L_Z)
-
 // clang-format off
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -91,7 +39,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           KC_NO,   KC_NO,   KC_NO, KC_BTN2,    KC_BTN1,    KC_BTN3
     ),
     [_BUTTON] = LAYOUT_split_3x5_3(
-        LCTL(KC_Y), LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), LCTL(KC_V), LCTL(KC_C), LCTL(KC_X), LCTL(KC_Z), LCTL(KC_Y),
+        LT_AOGO,    LT_CCAR,    LT_EOGO,    LT_EDOT,    LT_IOGO,    LT_SCAR,    LT_UOGO,    LT_UMAC,    LT_ZCAR,    KC_NO,
         KC_LGUI,    KC_LALT,    KC_LCTL,    KC_LSFT,    UC_PREV,    UC_NEXT,    KC_LSFT,    KC_LCTL,    KC_LALT,    KC_LGUI,
         LCTL(KC_Y), LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), LCTL(KC_V), LCTL(KC_C), LCTL(KC_X), LCTL(KC_Z), LCTL(KC_Y),
                                 KC_BTN3,    KC_BTN1,    KC_BTN2,    KC_BTN2,    KC_BTN1,    KC_BTN3
@@ -103,16 +51,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           KC_NO,   KC_NO,   KC_NO, KC_MSTP, KC_MPLY, KC_MUTE
     ),
     [_NUM] = LAYOUT_split_3x5_3(
-        KC_LBRC,  KC_7, KC_8,   KC_9, KC_RBRC,  KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,
-        KC_SCLN,  KC_4, KC_5,   KC_6, KC_EQUAL, KC_NO, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
-        KC_GRAVE, KC_1, KC_2,   KC_3, KC_BSLS,  KC_NO, KC_NO,   KC_NO,   KC_RALT, KC_NO,
-                        KC_DOT, KC_0, KC_MINUS, KC_NO, KC_NO,   KC_NO
+        LT_LBRC,  LT_7, LT_8,   LT_9, LT_RBRC,  KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,
+        LT_SCLN,  LT_4, LT_5,   LT_6, LT_EQUAL, KC_NO, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
+        LT_GRAVE, LT_1, LT_2,   LT_3, LT_BSLS,  KC_NO, KC_NO,   KC_NO,   KC_RALT, KC_NO,
+                        LT_DOT, LT_0, LT_MINS,  KC_NO, KC_NO,   KC_NO
     ),
     [_SYM] = LAYOUT_split_3x5_3(
-        LSFT(KC_LBRC),  LSFT(KC_7), LSFT(KC_8),   LSFT(KC_9), LSFT(KC_RBRC),  KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,
-        LSFT(KC_SCLN),  LSFT(KC_4), LSFT(KC_5),   LSFT(KC_6), LSFT(KC_EQUAL), KC_NO, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
-        LSFT(KC_GRAVE), LSFT(KC_1), LSFT(KC_2),   LSFT(KC_3), LSFT(KC_BSLS),  KC_NO, KC_NO,   KC_NO,   KC_RALT, KC_NO,
-                                    LSFT(KC_DOT), LSFT(KC_0), LSFT(KC_MINUS), KC_NO, KC_NO,   KC_NO
+        LT_LCBR, LT_AMPR, LT_ASTR, LT_LPRN, LT_RCBR, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,
+        LT_COLN, LT_DLR,  LT_PERC, LT_CIRC, LT_PLUS, KC_NO, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
+        LT_TILD, LT_EXLM, LT_AT,   LT_HASH, LT_PIPE, KC_NO, KC_NO,   KC_NO,   KC_RALT, KC_NO,
+                          LT_RABK, LT_RPRN, LT_UNDS, KC_NO, KC_NO,   KC_NO
     ),
     [_FUN] = LAYOUT_split_3x5_3(
         KC_F12, KC_F7, KC_F8,          KC_F9,  KC_PSCR,        KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,
@@ -124,20 +72,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 
 // clang-format on
-
-/* COMBOS FOR LITHUANIAN LETTERS START */
-const uint16_t PROGMEM a_nosine[] = {LGUI_T(KC_A), LALT_T(KC_R), COMBO_END};
-const uint16_t PROGMEM ch[]       = {KC_C, KC_D, COMBO_END};
-const uint16_t PROGMEM ee[]       = {LCTL_T(KC_E), LALT_T(KC_I), COMBO_END};
-const uint16_t PROGMEM je[]       = {LCTL_T(KC_E), LSFT_T(KC_N), COMBO_END};
-const uint16_t PROGMEM ii[]       = {LALT_T(KC_I), LGUI_T(KC_O), COMBO_END};
-const uint16_t PROGMEM sh[]       = {LCTL_T(KC_S), LSFT_T(KC_T), COMBO_END};
-const uint16_t PROGMEM uu[]       = {KC_U, KC_Y, COMBO_END};
-const uint16_t PROGMEM oo[]       = {KC_U, KC_L, COMBO_END};
-const uint16_t PROGMEM zh[]       = {LT(_BUTTON, KC_Z), ALGR_T(KC_X), COMBO_END};
-
-combo_t key_combos[] = {COMBO(a_nosine, K_LT_A), COMBO(ch, K_LT_C), COMBO(ee, K_LT_E1), COMBO(je, K_LT_E2), COMBO(ii, K_LT_I), COMBO(sh, K_LT_S), COMBO(uu, K_LT_U1), COMBO(oo, K_LT_U2), COMBO(zh, K_LT_Z)};
-/* COMBOS FOR LITHUANIAN LETTERS END */
 
 #ifdef OLED_ENABLE
 
