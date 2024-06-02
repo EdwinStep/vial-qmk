@@ -12,6 +12,9 @@
 #define RGBLIGHT_ANIMATIONS
 #define DYNAMIC_KEYMAP_LAYER_COUNT 10
 
+#undef TAPPING_TERM
+#define TAPPING_TERM 200
+
 // Mouse key speed and acceleration.
 #undef MOUSEKEY_DELAY
 #define MOUSEKEY_DELAY 0

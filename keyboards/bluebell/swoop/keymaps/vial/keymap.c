@@ -316,6 +316,8 @@ bool oled_task_user(void) {
 #endif
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    static uint16_t my_timer;
+
     switch (keycode) {
             /* KEYBOARD PET STATUS START */
 
@@ -324,17 +326,26 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case LCTL_T(KC_E):
         case LSFT_T(KC_N):
             if (record->event.pressed) {
-                isSneaking = true;
+                my_timer = timer_read();
             } else {
-                isSneaking = false;
+                if (timer_elapsed(my_timer) > TAPPING_TERM) {
+                    isSneaking = true;
+                } else {
+                    isSneaking = false;
+                }
             }
             break;
         case LT(_NAV,KC_SPC):
             if (record->event.pressed) {
-                isJumping  = true;
-                showedJump = false;
+                my_timer = timer_read();
+
             } else {
-                isJumping = false;
+                if (timer_elapsed(my_timer) < TAPPING_TERM) {
+                    isJumping  = true;
+                    showedJump = false;
+                } else {
+                    isJumping = false;
+                }
             }
             break;
 
