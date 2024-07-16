@@ -1,8 +1,6 @@
 VIA_ENABLE = yes
 VIAL_ENABLE = yes
 
-EEPROM_DRIVER = transient
-
 OLED_ENABLE = yes
 OLED_DRIVER = ssd1306
 OLED_TRANSPORT = i2c
