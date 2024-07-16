@@ -15,8 +15,6 @@
 #undef TAPPING_TERM
 #define TAPPING_TERM 200
 
-#define IGNORE_MOD_TAP_INTERRUPT
-
 // Mouse key speed and acceleration.
 #undef MOUSEKEY_DELAY
 #define MOUSEKEY_DELAY 0
