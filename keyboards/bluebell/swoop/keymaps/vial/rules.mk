@@ -1,8 +1,7 @@
 VIA_ENABLE = yes
 VIAL_ENABLE = yes
 
-EEPROM_DRIVER = wear_leveling
-WEAR_LEVELING_DRIVER = rp2040_flash
+EEPROM_DRIVER = transient
 
 OLED_ENABLE = yes
 OLED_DRIVER = ssd1306
