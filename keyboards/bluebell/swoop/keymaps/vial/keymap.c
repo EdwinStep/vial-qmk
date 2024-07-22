@@ -336,7 +336,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 }
             }
             break;
-        case LT(_NAV,KC_SPC):
+        case LT(_NAV, KC_SPC):
             if (record->event.pressed) {
                 my_timer = timer_read();
 
