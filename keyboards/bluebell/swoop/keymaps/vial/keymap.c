@@ -16,15 +16,15 @@
 #include QMK_KEYBOARD_H
 #include "keymap_lithuanian_qwerty.h"
 
-enum layers { _BASE, _NAV, _MOUSE, _BUTTON, _MEDIA, _NUM, _SYM, _FUN };
+enum layers { _BASE, _NAV, _MOUSE, _LTU, _MEDIA, _NUM, _SYM, _FUN };
 
 // clang-format off
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_BASE] = LAYOUT_split_3x5_3(
-        KC_Q,         KC_W,         KC_F,              KC_P,            KC_B,              KC_J,            KC_L,             KC_U,                KC_Y,           KC_QUOT,
-        LGUI_T(KC_A), LALT_T(KC_R), LCTL_T(KC_S),      LSFT_T(KC_T),    KC_G,              KC_M,            LSFT_T(KC_N),     LCTL_T(KC_E),        LALT_T(KC_I),   LGUI_T(KC_O),
-        KC_Z,         ALGR_T(KC_X), LT(_BUTTON,KC_C),  KC_D,            KC_V,              KC_K,            KC_H,             LT(_BUTTON,KC_COMM), ALGR_T(KC_DOT), KC_SLSH,
+        KC_B,         KC_L,         KC_D,              KC_C,            KC_V,              KC_J,            KC_Y,             KC_O,                KC_U,           KC_COMM,
+        LGUI_T(KC_N), LALT_T(KC_R), LCTL_T(KC_S),      LSFT_T(KC_T),    KC_G,              KC_P,            LSFT_T(KC_H),     LCTL_T(KC_A),        LALT_T(KC_E),   LGUI_T(KC_I),
+        KC_X,         ALGR_T(KC_Q), LT(_LTU,KC_M),     KC_W,            KC_Z,              KC_K,            KC_F,             LT(_LTU,KC_QUOT),    ALGR_T(LT_SCLN),KC_DOT,
                                     LT(_MEDIA,KC_ESC), LT(_NAV,KC_SPC), LT(_MOUSE,KC_TAB), LT(_SYM,KC_ENT), LT(_NUM,KC_BSPC), LT(_FUN,KC_DEL)
     ),
     [_NAV] = LAYOUT_split_3x5_3(
@@ -39,11 +39,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_NO,   KC_RALT, KC_NO,   KC_NO,   KC_NO, KC_WH_L,    KC_WH_D,    KC_WH_U,    KC_WH_R,    KC_NO,
                           KC_NO,   KC_NO,   KC_NO, KC_BTN2,    KC_BTN1,    KC_BTN3
     ),
-    [_BUTTON] = LAYOUT_split_3x5_3(
-        LT_AOGO,    LT_CCAR,    LT_EOGO,    LT_EDOT,    LT_IOGO,    LT_SCAR,    LT_UOGO,    LT_UMAC,    LT_ZCAR,    KC_NO,
-        KC_LGUI,    KC_LALT,    KC_LCTL,    KC_LSFT,    UC_PREV,    UC_NEXT,    KC_LSFT,    KC_LCTL,    KC_LALT,    KC_LGUI,
-        LCTL(KC_Y), LCTL(KC_Z), LCTL(KC_X), LCTL(KC_C), LCTL(KC_V), LCTL(KC_V), LCTL(KC_C), LCTL(KC_X), LCTL(KC_Z), LCTL(KC_Y),
-                                KC_BTN3,    KC_BTN1,    KC_BTN2,    KC_BTN2,    KC_BTN1,    KC_BTN3
+    [_LTU] = LAYOUT_split_3x5_3(
+        KC_NO,      KC_NO,      KC_NO,      LT_CCAR,              KC_NO,      KC_NO,      LT_UMAC,    LT_EDOT,             LT_UOGO,          KC_NO,
+        KC_LGUI,    KC_LALT,    KC_LCTL,    LSFT_T(LT_SCAR),      UC_PREV,    UC_NEXT,    KC_LSFT,    LCTL_T(LT_AOGO),     ALT_T(LT_EOGO),   LGUI_T(LT_IOGO),
+        KC_NO,      KC_NO,      KC_NO,      KC_NO,                LT_ZCAR,    KC_NO,      KC_NO,      KC_NO,               KC_NO,            KC_NO,
+                                KC_BTN3,    KC_BTN1,              KC_BTN2,    KC_BTN2,    KC_BTN1,    KC_BTN3
     ),
     [_MEDIA] = LAYOUT_split_3x5_3(
         KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
@@ -53,13 +53,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     ),
     [_NUM] = LAYOUT_split_3x5_3(
         LT_LBRC,  LT_7, LT_8,   LT_9, LT_RBRC,  KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,
-        LT_SCLN,  LT_4, LT_5,   LT_6, LT_EQL,   KC_NO, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
+        LT_SLSH,  LT_4, LT_5,   LT_6, LT_EQL,   KC_NO, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
         LT_GRV,   LT_1, LT_2,   LT_3, LT_BSLS,  KC_NO, KC_NO,   KC_NO,   KC_RALT, KC_NO,
                         LT_DOT, LT_0, LT_MINS,  KC_NO, KC_NO,   KC_NO
     ),
     [_SYM] = LAYOUT_split_3x5_3(
         LT_LCBR, LT_AMPR, LT_ASTR, LT_LPRN, LT_RCBR, KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,
-        LT_COLN, LT_DLR,  LT_PERC, LT_CIRC, LT_PLUS, KC_NO, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
+        LT_QUES, LT_DLR,  LT_PERC, LT_CIRC, LT_PLUS, KC_NO, KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
         LT_TILD, LT_EXLM, LT_AT,   LT_HASH, LT_PIPE, KC_NO, KC_NO,   KC_NO,   KC_RALT, KC_NO,
                           LT_RABK, LT_RPRN, LT_UNDS, KC_NO, KC_NO,   KC_NO
     ),
@@ -270,8 +270,8 @@ static void print_status_narrow(void) {
         case _MOUSE:
             oled_write_P(PSTR("Mouse\n"), false);
             break;
-        case _BUTTON:
-            oled_write_P(PSTR("Btn\n"), false);
+        case _LTU:
+            oled_write_P(PSTR("LTU\n"), false);
             break;
         case _MEDIA:
             oled_write_P(PSTR("Media\n"), false);
